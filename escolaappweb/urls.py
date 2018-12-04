@@ -22,3 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts'))
 ]
+handler400 = 'escolappweb_dashboard.views.erro_400'
+handler403 = 'escolappweb_dashboard.views.erro_403'
+handler404 = 'escolappweb_dashboard.views.erro_404'
+handler500 = 'escolappweb_dashboard.views.erro_500'
