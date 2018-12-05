@@ -2,6 +2,13 @@
 {% block conteudo %}
     <h1>Esta é a primeira tela do dashboard!</h1>
 
+    <td>
+        <li><a href="{% url 'dashboard:create-turma' %}">Create Turma</a></li>
+        <li><a href="{% url 'dashboard:create-materia' %}">Create Matéria</a></li>
+        <li><a href="{% url 'dashboard:create-pai' %}">Create Pai</a></li>
+        <li><a href="{% url 'dashboard:create-aluno' %}">Create Aluno</a></li>
+    </td>
+
     {# forms de logout #}
     <form method="POST" action="{% url 'accounts:logout' %}">
         {% csrf_token %}

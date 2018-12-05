@@ -4,6 +4,18 @@ from escolaappweb_dashboard.constants import REGEX_TELEFONE
 
 # CRUD Alunos, Pais, Turmas, Matérias
 
+class TurmaForm(forms.ModelForm):
+    class Meta:
+        model = Turma
+        fields = '__all__'
+
+
+class MateriaForm(forms.ModelForm):
+    class Meta:
+        model = Materia
+        fields = '__all__'
+
+
 class PaiForm(forms.Form):
     # TODO: telefone Precisa ser validado com regex.
     # portanto, não é possivel utilizar ModelForm (?)
@@ -34,18 +46,6 @@ class PaiForm(forms.Form):
             raise forms.ValidationError('Caractere inválido.')
 
         return super(PaiForm, self).clean(*args,**kw)
-
-
-class TurmaForm(forms.ModelForm):
-    class Meta:
-        model = Turma
-        fields = '__all__'
-
-
-class MateriaForm(forms.ModelForm):
-    class Meta:
-        model = Materia
-        fields = '__all__'
 
 
 class AlunoForm(forms.ModelForm):

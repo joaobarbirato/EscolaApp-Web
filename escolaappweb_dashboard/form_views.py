@@ -8,12 +8,12 @@ def post_turma_forms(request):
 @login_required
 def post_materia_form(request):
     pass
-    
-@login_required
-def post_aluno_form(request):
-    pass
 
 @login_required
 def post_pai_form(request):
+    pass
+    
+@login_required
+def post_aluno_form(request):
     pass
     
