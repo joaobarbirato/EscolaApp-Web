@@ -35,7 +35,6 @@ def index(request):
 @login_required
 def create_turma_form(request):
     contexto = __get_create_context(key='turma')
-    print(contexto)
     return render(request=request, template_name="dashboard/create.html", context=contexto)
 
 ## Create materia
