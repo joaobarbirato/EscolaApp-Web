@@ -15,21 +15,21 @@ class MateriaForm(forms.ModelForm):
         model = Materia
         fields = '__all__'
 
-
-class PaiForm(forms.Form):
+from re import compile as verifica_com_regex
+class PaiForm(forms.ModelForm):
     # TODO: telefone Precisa ser validado com regex.
     # portanto, não é possivel utilizar ModelForm (?)
-    nome = forms.CharField(label='Insira o nome')
-    telefone = forms.RegexField(REGEX_TELEFONE
-        # 99 99999 9999
-        # 99 9999 9999
-        # 99 99999-9999
-        # 99 9999-9999
-        # (99) 99999 9999
-        # (99) 9999 9999
-        # (99) 99999-9999
-        # (99) 9999-9999
-    )
+    # nome = forms.CharField(label='Insira o nome')
+    # telefone = forms.RegexField(REGEX_TELEFONE
+    #     # 99 99999 9999
+    #     # 99 9999 9999
+    #     # 99 99999-9999
+    #     # 99 9999-9999
+    #     # (99) 99999 9999
+    #     # (99) 9999 9999
+    #     # (99) 99999-9999
+    #     # (99) 9999-9999
+    # )
     
     class Meta:
         model = Pai
@@ -39,11 +39,14 @@ class PaiForm(forms.Form):
         ]
 
     def clean(self, *args, **kw):
-        nome = self.cleaned_data('nome')
-        telefone = self.cleaned_data('telefone')
-
+        nome = self.cleaned_data.get('nome')
+        telefone = self.cleaned_data.get('telefone')
         if any(char.isdigit() for char in nome):
             raise forms.ValidationError('Caractere inválido.')
+        pattern = verifica_com_regex(REGEX_TELEFONE)
+        print(pattern.match(telefone))
+        if pattern.match(telefone) is None:
+            raise forms.ValidationError('Formato de telefone inválido!')
 
         return super(PaiForm, self).clean(*args,**kw)
 

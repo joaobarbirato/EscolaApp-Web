@@ -11,3 +11,11 @@ urlpatterns = [
     path('criar-pai/',views.create_pai_form, name='create-pai'),
     path('criar-aluno/',views.create_aluno_form, name='create-aluno'),
 ]
+
+# urls de POST
+urlpatterns += [
+    path('Z_DW0-DW5qQNuwp9hw9Oew/', form_views.post_turma_form, name='post-turma'),
+    path('LZ8f19Zbu87FVtSHC58XBQ/', form_views.post_materia_form, name='post-materia'),
+    path('jCj7tJ3kZqYb7Ha6t1Q-TQ/', form_views.post_pai_form, name='post-pai'),
+    path('rClyYqAXQy7PQtWpamTkiA/', form_views.post_aluno_form, name='post-aluno'),
+]

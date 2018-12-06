@@ -17,6 +17,7 @@ __FORM = {
 }
 
 # __get_create_context
+# Retorna contexto padrao de view para formulario de create
 # @key: chave para dicionario __FORM
 def __get_create_context(key=None):
     contexto = {}
@@ -25,10 +26,16 @@ def __get_create_context(key=None):
         contexto['model'] = __FORM[key].Meta.model._meta.verbose_name.title().lower()
     return contexto
 
+# _get_index_context
+# Retorna contexto padrao para index (importante para form_views)
+def _get_index_context():
+    return {}
+
 # Tela de início
 @login_required
 def index(request):
-    return render(request=request, template_name="dashboard/index.html", context={})
+    contexto = _get_index_context()
+    return render(request=request, template_name="dashboard/index.html", context=contexto)
 
 # Telas de acesso a formulários
 ## Create turma
