@@ -2,17 +2,18 @@ from django.db import models
 
 # Create your models here.
 
+def get_all(model=None):
+    return model.objects.all()
+
 class Turma(models.Model):
     nome = models.CharField(max_length=100, blank=False)
-    turma = models.ForeignKey('Turma', on_delete=models.SET_NULL, null=True, blank=True)
-    pai = models.ForeignKey('Pai', on_delete=models.SET_NULL, null=True, blank=True)
     ano = models.CharField(max_length=100, blank=False)
 
     class Meta:
         ordering = ['nome']
         verbose_name = u'Turma'
         verbose_name_plural = u'Turmas'
-
+    
     def __self__(self):
         return self.nome
 
@@ -66,3 +67,24 @@ class Aluno(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+def get_all_by_key(key=None):
+    if key == 'turma':
+        return Turma.objects.all()
+    elif key == 'Materia':
+        return Materia.objects.all()
+    elif key == 'Pai':
+        return Pai.objects.all()
+    elif key == 'Aluno':
+        return Aluno.objects.all()
+
+def get_model_by_key(key=None):
+    if key == 'turma':
+        return Turma
+    elif key == 'Materia':
+        return Materia
+    elif key == 'Pai':
+        return Pai
+    elif key == 'Aluno':
+        return Aluno
