@@ -1,0 +1,73 @@
+{% extends "dashboard/helpers/base.html" %}
+{% block titulo %}
+    <title>Criar {{model}} | EscolaApp</title>
+{% endblock %}
+{% block conteudo %}
+    <a href="{% url 'dashboard:index' %}">Voltar</a>
+    <h1>Esta é a tela de criar {{model}}!</h1>
+    {# forms de logout #}
+    {% if model == 'turma' %}
+        <form method="POST" action={% url 'dashboard:post-turma' %} id='post-form'>
+    {% elif model == 'materia' %}
+        <form method="POST" action={% url 'dashboard:post-materia' %} id='post-form'>
+    {% elif model == 'pai' %}
+        <form method="POST" action={% url 'dashboard:post-pai' %} id='post-form'>
+    {% elif model == 'aluno' %}
+        <form method="POST" action={% url 'dashboard:post-aluno' %} id='post-form'>
+    {% else %}
+    {# TODO: pouco provavel, mas redirecionar para erro #}
+        <form method="POST" action={% url 'dashboard:index' %} id='post-form'>
+    {% endif %}
+        {% csrf_token %}
+        <div id="form-wrapper">
+            {# aqui também vão os erros do form #}
+            {{ form.as_p }}
+        </div>
+        <input value="Criar" type="submit">
+    </form>
+{% endblock %}
+
+{% block scripts %}
+
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.js"
+			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+			  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+    <script type="text/javascript">
+        function csrfSafeMethod(method) {
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", $("[name=csrfmiddlewaretoken]").val());
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        var formulario = $('#post-form');
+        formulario.submit(function(event){
+            event.preventDefault();
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: new FormData($(this).get(0)),
+                cache: false,
+                processData:false,
+                contentType:false,
+                success: function(){
+                    errors.hide()
+                    alert("SUCESSO!");
+                },
+                error: function(data){
+                    $('#form-wrapper').text('')
+                    $('#form-wrapper').append(data.responseJSON['error']);
+                },
+            });
+        });
+    </script>
+{% endblock %}
+
