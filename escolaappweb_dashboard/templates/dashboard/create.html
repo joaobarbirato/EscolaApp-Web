@@ -1,10 +1,11 @@
 {% extends "dashboard/helpers/base.html" %}
 {% block titulo %}
-    <title>Criar {{model}} | EscolaApp</title>
+    <title>Adcionar {{model}} | EscolaApp</title>
 {% endblock %}
+
 {% block conteudo %}
     <a href="{% url 'dashboard:index' %}">Voltar</a>
-    <h1>Esta é a tela de criar {{model}}!</h1>
+    <h1>Adcionar {{model}}!</h1>
     {# forms de logout #}
     {% if model == 'turma' %}
         <form method="POST" action={% url 'dashboard:post-turma' %} id='post-form'>
