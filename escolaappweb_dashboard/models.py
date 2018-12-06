@@ -1,12 +1,11 @@
 from django.db import models
 
-
 # Create your models here.
 
 class Aluno(models.Model):
     nome = models.CharField(max_length=100, blank=False)
-    turma = models.ForeignKey(Turma, on_delete=models.SET_NULL, null=True, blank=True)
-    pai = models.ForeignKey(Pai, on_delete=models.SET_NULL, null=True, blank=True)
+    turma = models.ForeignKey('Turma', on_delete=models.SET_NULL, null=True, blank=True)
+    pai = models.ForeignKey('Pai', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __self__(self):
         return self.nome
