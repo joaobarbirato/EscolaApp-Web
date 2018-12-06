@@ -4,10 +4,6 @@ from django.contrib.auth.decorators import login_required
 from escolaappweb_dashboard.views import (
     __FORM,
     _get_index_context,
-    create_turma_form,
-    create_materia_form,
-    create_pai_form,
-    create_aluno_form
 )
 
 # __verify_form
@@ -20,20 +16,17 @@ def __verify_form(request,key=None):
             form = __FORM[key](request.POST)
             if form.is_valid():
                 form.save()
-                #TODO: tratar com JSON?
                 response = JsonResponse({"success":"form valido"})
                 response.status_code = 200
-                print(form.errors)
-                return response#render(request=request, template_name='dashboard/index.html', context=_get_index_context())
+                return response
             else:
-                #TODO: forms nao valido
-                pass
+                response = JsonResponse({"error":form.as_ul()})
+                response.status_code = 550
+                return response
         else:
-            #TODO: render BAD REQUEST
-            pass
-    response = JsonResponse({"error":form.as_ul()})
-    response.status_code = 550
-    return response#render(request=request, template_name='dashboard/create.html', context={'form':form,'model':key})
+            return render(request,'400.html',{})
+            
+    return render(request,'404.html',{})
     
 
 @login_required
