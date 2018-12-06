@@ -4,8 +4,12 @@
 {% endblock %}
 
 {% block conteudo %}
-    <a href="{% url 'dashboard:index' %}">Voltar</a>
-    <h1>Adcionar {{model}}!</h1>
+    <div class="col-lg-6">
+    <div class="card">
+    <div class="card-header">
+        Adcionar  <strong>{{ model }}</strong>
+    </div>
+    <div class="card-body card-block">
     {# forms de logout #}
     {% if model == 'turma' %}
         <form method="POST" action={% url 'dashboard:post-turma' %} id='post-form'>
@@ -24,8 +28,16 @@
             {# aqui também vão os erros do form #}
             {{ form.as_p }}
         </div>
-        <input value="Criar" type="submit">
-    </form>
+        <div class="card-footer">
+            <input value="Criar" type="submit">
+        <button type="reset" href="{% url 'dashboard:index' %}" class="btn btn-danger btn-sm">
+            <i class="fa fa-ban"></i> Voltar
+        </button>
+    </div>
+        </form>
+    </div>
+    </div>
+    </div>
 {% endblock %}
 
 {% block scripts %}
