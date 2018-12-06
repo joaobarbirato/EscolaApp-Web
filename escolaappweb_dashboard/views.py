@@ -6,6 +6,10 @@ from escolaappweb_dashboard.forms import (
     PaiForm,
     AlunoForm
 )
+from escolaappweb_dashboard.models import (
+    get_all_by_key,
+    get_model_by_key
+)
 # Create your views here.
 
 # Dicionario de forms
@@ -24,6 +28,16 @@ def __get_create_context(key=None):
     if key in __FORM:
         contexto['form'] = __FORM[key]()
         contexto['model'] = __FORM[key].Meta.model._meta.verbose_name.title().lower()
+    return contexto
+
+# __get_table_context
+# Retorna contexto padrão de view para exibição de tabelas
+# @key: chave para .models.get_all_by_key 
+def __get_table_context(key=None):
+    contexto = {}
+    if key is not None:
+        contexto['model'] = key
+        contexto['all'] = get_all_by_key(key=key)
     return contexto
 
 # _get_index_context
@@ -61,6 +75,32 @@ def create_pai_form(request):
 def create_aluno_form(request):
     contexto = contexto = __get_create_context(key='aluno')
     return render(request=request, template_name="dashboard/create.html", context=contexto)
+
+# Views para visualizar tabelas
+## tabela Turma
+@login_required
+def table_turma_data(request):
+    contexto = __get_table_context(key='turma')
+    return render(request=request,template_name='dashboard/tables.html',context=contexto)
+
+## tabela Matéria
+@login_required
+def table_materia_data(request):
+    contexto = __get_table_context(key='materia')
+    return render(request=request,template_name='dashboard/tables.html',context=contexto)
+
+## tabela Pai
+@login_required
+def table_pai_data(request):
+    contexto = __get_table_context(key='pai')
+    return render(request=request,template_name='dashboard/tables.html',context=contexto)
+
+## tabela Aluno
+@login_required
+def table_aluno_data(request):
+    contexto = __get_table_context(key='aluno')
+    return render(request=request,template_name='dashboard/tables.html',context=contexto)
+
 
 # Views para handlers de erro
 def erro_400(request):

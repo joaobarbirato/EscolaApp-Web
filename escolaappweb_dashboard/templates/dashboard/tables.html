@@ -1,0 +1,98 @@
+{% extends "dashboard/helpers/base.html" %}
+{% load static %}
+{% block titulo %}
+    <title>Tabela {{model}} | EscolaApp</title>
+{% endblock %}
+{% block conteudo %}
+    {% if all %}
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Data Table</strong>
+            </div>
+            <div class="card-body">
+                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+        {% if model == 'turma' %}
+                            <th>Número</th>
+                            <th>Nome</th>
+                            <th>Ano</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {% for obj in all %}
+                        <tr>
+                            <td>{{obj.id}}</td>
+                            <td>{{obj.nome}}</td>
+                            <td>{{obj.ano}}</td>
+                        </tr>
+            {% endfor %}
+        {% elif model == 'materia' %}
+                            <th>Número</th>
+                            <th>Nome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {% for obj in all %}
+                        <tr>
+                            <td>{{obj.id}}</td>
+                            <td>{{obj.nome}}</td>
+                        </tr>
+            {% endfor %}
+        {% elif model == 'pai' %}
+                            <th>Número</th>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {% for obj in all %}
+                        <tr>
+                            <td>{{obj.id}}</td>
+                            <td>{{obj.nome}}</td>
+                            <td>{{obj.telefone}}</td>
+                        </tr>
+            {% endfor %}
+        {% elif model == 'aluno' %}
+                            <th>Número</th>
+                            <th>Nome</th>
+                            <th>Turma</th>
+                            <th>Pai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {% for obj in all %}
+                        <tr>
+                            <td>{{obj.id}}</td>
+                            <td>{{obj.nome}}</td>
+                            <td>{{obj.turma}}</td>
+                            <td>{{obj.pai}}</td>
+                        </tr>
+            {% endfor %}
+        {% else %}
+                        </tr>
+                    </thead>
+                    <tbody>
+        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <h1>ops!</h1>
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    <script src={% static 'vendors/datatables.net/js/jquery.dataTables.min.js' %}></script>
+    <script src={% static "vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js" %}></script>
+    <script src={% static "vendors/datatables.net-buttons/js/dataTables.buttons.min.js" %}></script>
+    <script src={% static "vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js" %}></script>
+    <script src={% static "vendors/jszip/dist/jszip.min.js" %}></script>
+    <script src={% static "vendors/pdfmake/build/pdfmake.min.js" %}></script>
+    <script src={% static "vendors/pdfmake/build/vfs_fonts.js" %}></script>
+    <script src={% static "vendors/datatables.net-buttons/js/buttons.html5.min.js" %}></script>
+    <script src={% static "vendors/datatables.net-buttons/js/buttons.print.min.js" %}></script>
+    <script src={% static "vendors/datatables.net-buttons/js/buttons.colVis.min.js" %}></script>
+    <script src={% static "assets/js/init-scripts/data-table/datatables-init.js" %}></script>
+{% endblock %}
