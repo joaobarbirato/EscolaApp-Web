@@ -38,8 +38,6 @@ def __get_table_context(key=None):
     if key is not None:
         contexto['model'] = key
         contexto['all'] = get_all_by_key(key=key)
-        model = get_model_by_key(key=key)
-        contexto['fields'] = [field for field in model._meta.get_fields()]
     return contexto
 
 # _get_index_context
@@ -89,19 +87,19 @@ def table_turma_data(request):
 @login_required
 def table_materia_data(request):
     contexto = __get_table_context(key='materia')
-    return render(request=request,template_name='',context=contexto)
+    return render(request=request,template_name='dashboard/tables.html',context=contexto)
 
 ## tabela Pai
 @login_required
 def table_pai_data(request):
     contexto = __get_table_context(key='pai')
-    return render(request=request,template_name='',context=contexto)
+    return render(request=request,template_name='dashboard/tables.html',context=contexto)
 
 ## tabela Aluno
 @login_required
 def table_aluno_data(request):
     contexto = __get_table_context(key='aluno')
-    return render(request=request,template_name='',context=contexto)
+    return render(request=request,template_name='dashboard/tables.html',context=contexto)
 
 
 # Views para handlers de erro
