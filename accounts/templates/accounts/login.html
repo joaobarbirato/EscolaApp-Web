@@ -14,11 +14,11 @@
                         {% csrf_token %}
                         <div class="form-group">
                             <label>Usuário</label>
-                            {{ form.username }}
+                            <input id="id_username" type="text" name="username" required="" class="form-control" placeholder="Usuario">
                         </div>
                             <div class="form-group">
                                 <label>Senha</label>
-                                {{ form.password }}
+                                <input id="id_password" type="password" name="password" required="" class="form-control" placeholder="Senha">
                         </div>
                                 <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Entrar</button>
                                 <div class="register-link m-t-15 text-center">
