@@ -10,20 +10,9 @@ from escolaappweb_dashboard.views import (
     create_aluno_form
 )
 
-def __select_view(key):
-    if key in __FORM:
-        if key == 'turma':
-            return create_turma_form
-        elif key == 'materia':
-            return create_materia_form
-        elif key == 'pai':
-            return create_pai_form
-        elif key == 'aluno':
-            return create_aluno_form
-
-#
-#
-# @request: requisicao para  view
+# __verify_form
+# Retorna a devida resposta para um determinado modelo.
+# @request: requisicao para view
 # @key: chave para identificar qual form
 def __verify_form(request,key=None):
     if key in __FORM:
