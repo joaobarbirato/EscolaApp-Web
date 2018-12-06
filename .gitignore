@@ -94,3 +94,5 @@ venv/
 */migrations
 
 secrets/
+
+\.idea/
