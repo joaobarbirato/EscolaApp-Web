@@ -183,5 +183,17 @@
         </div> <!-- .content --><!-- /#right-panel -->
 
     <!-- Right Panel -->
+    <td>
+        <li><a href="{% url 'dashboard:create-turma' %}">Create Turma</a></li>
+        <li><a href="{% url 'dashboard:create-materia' %}">Create Matéria</a></li>
+        <li><a href="{% url 'dashboard:create-pai' %}">Create Pai</a></li>
+        <li><a href="{% url 'dashboard:create-aluno' %}">Create Aluno</a></li>
+    </td>
+
+    {# forms de logout #}
+    <form method="POST" action="{% url 'accounts:logout' %}">
+        {% csrf_token %}
+        <input value="Logout" type="submit"> 
+    </form>
 {% endblock %}
 
