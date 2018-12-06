@@ -1,6 +1,6 @@
 {% extends "dashboard/helpers/base.html" %}
-{% block conteudo %}
-
+{% block body %}
+<body class="bg-dark">
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
@@ -13,14 +13,14 @@
                     <form method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label>Email address</label>
+                            <label>Usuário</label>
                             {{ form.username }}
                         </div>
                             <div class="form-group">
-                                <label>Password</label>
+                                <label>Senha</label>
                                 {{ form.password }}
                         </div>
-                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Entrar</button>
                                 <div class="register-link m-t-15 text-center">
                                     <p>Não tem uma conta? <a href={% url 'accounts:register' %}"> Cadastre-se aqui</a></p>
                                 </div>
@@ -29,5 +29,5 @@
             </div>
         </div>
     </div>
-
+</body>
 {% endblock %}

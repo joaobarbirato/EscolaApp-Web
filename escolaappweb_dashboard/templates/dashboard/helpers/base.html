@@ -25,23 +25,59 @@
         <link rel="stylesheet" href="{% static "assets/css/style.css" %}">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     </head>
-
+    {% block body %}
     <body>
-        <nav>
-            {% block nav %}
-            {% endblock %}
-        </nav>
-        <main>
-            {% block conteudo %}
-                <b>bloco padrao</b>
-            {% endblock %}
-        </main>
-        <footer>
-            {% block footer %}
-            {% endblock %}
-        </footer>
+            {% include 'dashboard/helpers/left_panel.html' %}
+            <!-- Right Panel -->
 
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <!-- você pode por icones aqui -->
+                </div>
+
+                <div class="col-sm-5">
+
+                </div>
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% block conteudo %}
+            <h1>hello world</h1>
+        {% endblock %}
+
+    </div><!-- /#right-panel -->
+
+    <!-- Right Panel -->
     </body>
+    {% endblock %}
+
     <script src="{% static "vendors/jquery/dist/jquery.min.js" %}"></script>
     <script src="{% static "vendors/popper.js/dist/umd/popper.min.js" %}"></script>
     <script src="{% static "vendors/bootstrap/dist/js/bootstrap.min.js" %}"></script>
