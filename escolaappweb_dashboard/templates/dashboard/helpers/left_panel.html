@@ -31,8 +31,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tabelas</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                        <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
+                        <li><i class="fa fa-table"></i><a href={% url 'dashboard:table-turma' %}>Tabela de Turmas</a></li>
+                        <li><i class="fa fa-table"></i><a href={% url 'dashboard:table-materia' %}>Tabela de Matérias</a></li>
+                        <li><i class="fa fa-table"></i><a href={% url 'dashboard:table-pai' %}>Tabela de Pais</a></li>
+                        <li><i class="fa fa-table"></i><a href={% url 'dashboard:table-aluno' %}>Tabela de Alunos(as)</a></li>
                     </ul>
                 </li>
                 <li>

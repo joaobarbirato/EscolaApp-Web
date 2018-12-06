@@ -19,3 +19,11 @@ urlpatterns += [
     path('jCj7tJ3kZqYb7Ha6t1Q-TQ/', form_views.post_pai_form, name='post-pai'),
     path('rClyYqAXQy7PQtWpamTkiA/', form_views.post_aluno_form, name='post-aluno'),
 ]
+
+# urls de tabelas
+urlpatterns += [
+    path('tabela-turma/',views.table_turma_data, name='table-turma'),
+    path('tabela-materia/',views.table_materia_data, name='table-materia'),
+    path('tabela-pai/',views.table_pai_data, name='table-pai'),
+    path('tabela-aluno/',views.table_aluno_data, name='table-aluno'),
+]
