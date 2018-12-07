@@ -1,6 +1,9 @@
 from django.urls import path
-from escolaappweb_dashboard import views
-from escolaappweb_dashboard import form_views
+from escolaappweb_dashboard import (
+    views,
+    form_views,
+    get_api
+)
 
 app_name = 'escolaappweb_dashboard'
 
@@ -26,4 +29,12 @@ urlpatterns += [
     path('tabela-materia/',views.table_materia_data, name='table-materia'),
     path('tabela-pai/',views.table_pai_data, name='table-pai'),
     path('tabela-aluno/',views.table_aluno_data, name='table-aluno'),
+]
+
+# urls de API GET
+urlpatterns += [
+    path('8lcuAh9rhmnWpOWiqWxeZg/', get_api.get_json_turma, name='get-json-turma'),
+    path('0OmOY5GQRB0f6-GZ-cc49w/', get_api.get_json_materia, name='get-json-materia'),
+    path('M76OmD3dP_vbeaBHw6fLVQ/', get_api.get_json_pai, name='get-json-pai'),
+    path('_TJjhAmN1ElAdqQGzaQGMg/', get_api.get_json_aluno, name='get-json-aluno'),
 ]
