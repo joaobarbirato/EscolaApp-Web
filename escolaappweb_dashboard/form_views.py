@@ -28,19 +28,24 @@ def __verify_form(request,key=None):
             
     return render(request,'404.html',{})
     
+# Views específicas para cada modelo
 
+## post criação de Turma
 @login_required
 def post_turma_form(request):
     return __verify_form(request=request, key='turma')
 
+## post criação de Materia
 @login_required
 def post_materia_form(request):
     return __verify_form(request=request, key='materia')
 
+## post criação de Pai
 @login_required
 def post_pai_form(request):
     return __verify_form(request=request, key='pai')
     
+## post criação de Aluno
 @login_required
 def post_aluno_form(request):
     return __verify_form(request=request, key='aluno')
