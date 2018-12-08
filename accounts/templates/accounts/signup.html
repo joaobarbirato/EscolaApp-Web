@@ -1,6 +1,6 @@
 {% extends "dashboard/helpers/base.html" %}
 {% block conteudo %}
-    <form method="POST">
+    <form method="POST" action={% url 'accounts:register' %}>
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit"/>

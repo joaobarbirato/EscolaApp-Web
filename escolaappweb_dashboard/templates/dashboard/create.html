@@ -30,10 +30,10 @@
         </div>
         <div class="card-footer">
             <input class="btn btn-primary" value="Criar" type="submit">
-        <button type="reset" href="{% url 'dashboard:index' %}" class="btn btn-danger">
-            <i class="fa fa-ban"></i> Voltar
+            <button type="reset" class="btn btn-danger">
+            <a href="{% url 'dashboard:index' %}" >Voltar</a>
         </button>
-    </div>
+        </div>
         </form>
     </div>
     </div>
@@ -72,8 +72,8 @@
                 processData:false,
                 contentType:false,
                 success: function(){
-                    errors.hide()
                     alert("SUCESSO!");
+                    console.log("sucesso!");
                 },
                 error: function(data){
                     $('#form-wrapper').text('')
